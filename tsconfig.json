@@ -6,5 +6,6 @@
   },
   "files" : [
     "script.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

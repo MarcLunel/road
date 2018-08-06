@@ -1,6 +1,48 @@
 let zoneDiv = document.getElementById('zone');
+let zoneDivWidth = zoneDiv.clientWidth;
+let zoneDivHeight = zoneDiv.clientHeight;
 let circle = document.getElementById('circle');
 let road = document.getElementById('road');
+let NumberRoad = 10;
+class Road {
+    constructor(roadPoints) {
+        this.roadPoints = roadPoints;
+        this.X1 = 1;
+        this.X2 = 2;
+        this.Y1 = 3;
+        this.Y2 = 4;
+    }
+    editPoints(coordinateX, coordinateY) {
+        let way = chooseWay(1, 2);
+        switch (way) {
+            case 1:
+                this.X1 = coordinateX;
+                this.X2 = coordinateX;
+                this.Y1 = coordinateY;
+                this.Y2 = Math.floor(Math.random() * ((zoneDivHeight - 10) - 10 + 1)) + 10;
+                break;
+            case 2:
+                this.X1 = coordinateX;
+                this.X2 = Math.floor(Math.random() * ((zoneDivWidth - 10) - 10 + 1)) + 10;
+                ;
+                this.Y1 = coordinateY;
+                this.Y2 = coordinateY;
+                break;
+        }
+    }
+    showPoints() {
+        console.log(this.X1, this.X2, this.Y1, this.Y2);
+    }
+}
+let a = new Road();
+let b = new Road();
+let c = new Road();
+a.showPoints();
+var roadList = [a, b, c];
+console.dir(roadList);
+for (var i = 0; i < NumberRoad; i++) {
+    let road = new Road();
+}
 /**
 * @method chooseWay : Define with numbers which road points will follow
 * @param min number : Minimum number of roads

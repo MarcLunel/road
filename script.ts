@@ -1,18 +1,69 @@
-interface Road{
-  startPoint:{
-    x:number,
-    y:number
-  },
-  endPoint:{
-    x:number,
-    y:number
-  }
+interface RoadPoints{
+  X1: number,
+  X2: number,
+  Y1: number,
+  Y2: number
 }
 
 let zoneDiv =  document.getElementById('zone');
+let zoneDivWidth = zoneDiv.clientWidth;
+let zoneDivHeight = zoneDiv.clientHeight;
 let circle = document.getElementById('circle');
 let road = document.getElementById('road');
+let NumberRoad :number = 10;
 
+class Road {
+
+  public roadPoints: RoadPoints;
+  public X1;
+  public X2;
+  public Y1;
+  public Y2;
+
+  constructor(roadPoints? :RoadPoints){
+    this.roadPoints = roadPoints;
+    this.X1 = 1;
+    this.X2 = 2;
+    this.Y1 = 3;
+    this.Y2 = 4;
+  }
+
+  private editPoints(coordinateX, coordinateY){
+    let way :number = chooseWay(1,2);
+    switch(way){
+      case 1 :
+        this.X1 = coordinateX;
+        this.X2 = coordinateX;
+        this.Y1 = coordinateY;
+        this.Y2 = Math.floor(Math.random() * ((zoneDivHeight - 10) - 10 + 1)) + 10;
+      break;
+
+      case 2 :
+        this.X1 = coordinateX;
+        this.X2 = Math.floor(Math.random() * ((zoneDivWidth - 10) - 10 + 1)) + 10;;
+        this.Y1 = coordinateY;
+        this.Y2 = coordinateY;
+      break;
+    }
+  }
+
+  public showPoints(){
+    console.log(this.X1, this.X2, this.Y1, this.Y2);
+  }
+
+}
+
+let a = new Road();
+let b = new Road();
+let c = new Road();
+a.showPoints();
+var roadList = [a, b, c];
+console.dir(roadList);
+
+for(var i=0 ; i<NumberRoad ; i++){
+  let road = new Road();
+
+}
 
 /**
 * @method chooseWay : Define with numbers which road points will follow
